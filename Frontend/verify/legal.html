@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Legal & Land Records</title>
+    <link rel="stylesheet" href="/static/css/verify.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Legal & Land Records</h2>
+    <p class="subtitle">
+        Slum-wise legal status and land ownership details
+    </p>
+
+    <table class="dept-table">
+        <thead>
+            <tr>
+                <th>Slum Name</th>
+                <th>Established Year</th>
+                <th>Legal Status</th>
+                <th>Land Ownership</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in slums %}
+            <tr>
+    <td>{{ s.name }}</td>
+
+    <td>{{ s.established_year if s.established_year else "—" }}</td>
+
+    <td>{{ s.legal_status if s.legal_status else "—" }}</td>
+
+    <td>{{ s.land_ownership if s.land_ownership else "—" }}</td>
+
+    <!-- STATUS COLUMN -->
+    <td class="status-cell">
+        <span class="status {{ s.legal_verify_status|lower }}">
+            {{ s.legal_verify_status }}
+        </span>
+
+        {% if s.legal_verify_status == 'Pending' %}
+        <div class="action-buttons">
+            <button class="approve"
+                    onclick="updateStatus('legal','{{ s.id }}','Verified')"
+>
+                Approve
+            </button>
+
+            <button class="reject"
+                    onclick="updateStatus('legal','{{ s.id }}','Rejected')">
+                Reject
+            </button>
+        </div>
+        {% endif %}
+    </td>
+</tr>
+
+            {% else %}
+            <tr>
+                <td colspan="5" class="empty-row">
+                    No legal records available
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/static/js/status.js"></script>
+
+</body>
+</html>

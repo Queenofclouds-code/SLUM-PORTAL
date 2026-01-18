@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demography & Social Statistics</title>
+    <link rel="stylesheet" href="/static/css/verify.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Demography & Social Statistics</h2>
+    <p class="subtitle">Slum-wise population and household details</p>
+
+    <table class="dept-table">
+        <thead>
+            <tr>
+                <th>Slum Name</th>
+                <th>Total Households</th>
+                <th>Total Population</th>
+                <th>Avg. Family Size</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in slums %}
+            <tr>
+    <td>{{ s.name }}</td>
+    <td>{{ s.total_households }}</td>
+    <td>{{ s.total_population }}</td>
+    <td>{{ s.avg_family_size }}</td>
+
+    <!-- STATUS COLUMN -->
+    <td class="status-cell">
+        <span class="status {{ s.demography_status|lower }}">
+            {{ s.demography_status }}
+        </span>
+
+        {% if s.demography_status == 'Pending' %}
+        <div class="action-buttons">
+            <button class="approve"
+                    onclick="updateStatus('demography','{{ s.id }}','Verified')"
+>
+                Approve
+            </button>
+
+            <button class="reject"
+                    onclick="updateStatus('demography','{{ s.id }}','Rejected')">
+                Reject
+            </button>
+        </div>
+        {% endif %}
+    </td>
+</tr>
+
+            {% else %}
+            <tr>
+                <td colspan="5" class="empty-row">
+                    No demographic data available
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="/static/js/status.js"></script>
+
+</body>
+</html>

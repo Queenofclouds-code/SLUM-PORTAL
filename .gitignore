@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Uploads (DO NOT PUSH)
+Photos/
+Videos/
+
+# Environment
+.env
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db

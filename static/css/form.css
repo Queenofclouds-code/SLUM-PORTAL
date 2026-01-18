@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: #f4f6f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.wizard-container {
+    width: 420px;
+}
+
+.step {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.step.active {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d6efd;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.next {
+    background: #0d6efd;
+    color: white;
+}
+
+.prev {
+    background: #6c757d;
+    color: white;
+}
+
+.submit {
+    background: #198754;
+    color: white;
+}
+.file-group {
+    margin-top: 12px;
+}
+
+.file-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #0d6efd;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.file-btn:hover {
+    background: #0b5ed7;
+}
+
+.file-name {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #555;
+}

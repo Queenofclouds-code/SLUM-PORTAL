@@ -1,0 +1,105 @@
+/* Page layout */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 5px;
+    color: #1f2937;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+/* Department table */
+.dept-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dept-table th {
+    background-color: #f3f6f9;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #d1d5db;
+}
+
+.dept-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dept-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.dept-table tr:hover {
+    background-color: #eef6ff;
+}
+
+/* Slum name highlight */
+.dept-table td:first-child {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Empty state */
+.empty-row {
+    text-align: center;
+    color: #9ca3af;
+    padding: 20px;
+}
+
+/* Center numeric columns only */
+.dept-table td:nth-child(2),
+.dept-table td:nth-child(3),
+.dept-table td:nth-child(4) {
+    text-align: center;
+}
+
+/* Status column */
+.dept-table td:last-child,
+.dept-table th:last-child {
+    text-align: left;
+}
+
+
+.status-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status {
+    font-weight: 600;
+}
+
+button.approve {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+button.reject {
+    background: #c62828;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.status-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;   /* 🔥 prevents wrapping */
+}
+
+
