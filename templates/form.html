@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Slum Identification Survey</title>
+    <link rel="stylesheet" href="/slum-portal/static/css/form.css">
+
+</head>
+
+<body>
+
+<div class="wizard-container">
+
+    <form id="slumForm">
+
+        <!-- STEP 1 -->
+        <div class="step active">
+            <h2>Basic Slum Information</h2>
+
+            <input name="name" placeholder="Slum Name" required>
+            <input name="ward_no" placeholder="Ward Number" required>
+            <input name="zone" placeholder="Zone" required>
+
+            <input id="latitude" name="latitude" placeholder="Latitude" readonly>
+            <input id="longitude" name="longitude" placeholder="Longitude" readonly>
+
+
+            <button type="button" class="next">Next →</button>
+        </div>
+
+        <!-- STEP 2 -->
+        <!-- STEP 2 -->
+<div class="step">
+    <h2>A. Household & Population</h2>
+
+    <input type="number" name="total_households" placeholder="Total Households">
+    <input type="number" name="total_population" placeholder="Total Population">
+    <input type="number" name="avg_family_size" placeholder="Average Family Size">
+
+    <div class="nav">
+        <button type="button" class="prev">← Back</button>
+        <button type="button" class="next">Next →</button>
+    </div>
+</div>
+
+
+        <!-- STEP 3 -->
+        <div class="step">
+            <h2>B. Slum Establishment & Legal</h2>
+
+            <input type="number" name="established_year" placeholder="Establishment Year">
+
+            <select name="legal_status">
+                <option value="">Legal Status</option>
+                <option>Declared</option>
+                <option>Non-Declared</option>
+            </select>
+
+            <select name="land_ownership">
+                <option value="">Land Ownership</option>
+                <option>Government</option>
+                <option>Private</option>
+                <option>Railway</option>
+                <option>Forest</option>
+            </select>
+
+            <div class="nav">
+                <button type="button" class="prev">← Back</button>
+                <button type="button" class="next">Next →</button>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step">
+            <h2>C. Basic Infrastructure</h2>
+
+            <select name="water_supply">
+                <option value="">Water Supply</option>
+                <option>Municipal</option>
+                <option>Borewell</option>
+                <option>None</option>
+            </select>
+
+            <select name="toilets">
+                <option value="">Toilet Facility</option>
+                <option>Individual</option>
+                <option>Community</option>
+                <option>None</option>
+            </select>
+
+            <select name="electricity">
+                <option value="">Electricity</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <select name="drainage">
+                <option value="">Drainage Facility</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <div class="nav">
+                <button type="button" class="prev">← Back</button>
+                <button type="button" class="next">Next →</button>
+            </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step">
+            <h2>D. Housing Condition</h2>
+
+            <select name="structure_type">
+                <option value="">Structure Type</option>
+                <option>Kutcha</option>
+                <option>Semi-Pucca</option>
+                <option>Pucca</option>
+            </select>
+
+            <select name="roof_material">
+                <option value="">Roof Material</option>
+                <option>Tin</option>
+                <option>RCC</option>
+                <option>Tiles</option>
+            </select>
+
+            <select name="flood_prone">
+                <option value="">Flood Prone</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <div class="file-group">
+    <label class="file-btn">
+        📷 Capture Photo
+        <input type="file" name="photo" id="photoInput"
+               accept="image/*" capture="camera" hidden>
+    </label>
+    <span id="photoName" class="file-name">No photo selected</span>
+</div>
+
+<div class="file-group">
+    <label class="file-btn">
+        🎥 Capture Video (≤ 40s)
+        <input type="file" name="video" id="videoInput"
+               accept="video/*" hidden>
+    </label>
+    <span id="videoName" class="file-name">No video selected</span>
+</div>
+
+
+            <div class="nav">
+                <button type="button" class="prev">← Back</button>
+                <button type="submit" class="submit">Submit Survey</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="/slum-portal/static/js/form.js"></script>
+
+</body>
+</html>
