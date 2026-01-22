@@ -73,7 +73,7 @@ document.getElementById("slumForm").addEventListener("submit", async e => {
     const formData = new FormData(form);
 
     try {
-        const res = await fetch("/slum", {
+        const res = await fetch("/slum-portal/api/slum", {
             method: "POST",
             body: formData
         });
