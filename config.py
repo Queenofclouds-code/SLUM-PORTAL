@@ -9,7 +9,8 @@ MAX_CONTENT_LENGTH = 60 * 1024 * 1024  # 60 MB
 
 SQLALCHEMY_DATABASE_URI = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres:postgres@localhost:5432/slum_gis"
+    "postgresql://postgres:admin@localhost:5432/slum_gis"
 )
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
