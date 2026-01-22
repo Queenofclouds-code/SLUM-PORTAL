@@ -5,6 +5,7 @@ from sqlalchemy import text
 from model import db, Slum
 from config import PHOTO_UPLOAD_FOLDER, VIDEO_UPLOAD_FOLDER
 from flask import send_from_directory, make_response
+from werkzeug.utils import secure_filename
 
 
 slum_routes = Blueprint("slum_routes", __name__)
@@ -98,8 +99,15 @@ def add_slum():
     os.makedirs(PHOTO_UPLOAD_FOLDER, exist_ok=True)
     os.makedirs(VIDEO_UPLOAD_FOLDER, exist_ok=True)
 
-    photo.save(os.path.join(PHOTO_UPLOAD_FOLDER, photo.filename))
-    video.save(os.path.join(VIDEO_UPLOAD_FOLDER, video.filename))
+    photo_filename = None
+    video_filename = None
+
+    if photo and photo.filename:
+       photo_filename = secure_filename(photo.filename)
+       photo.save(os.path.join(PHOTO_UPLOAD_FOLDER, photo_filename))
+    if video and video.filename:
+       video_filename = secure_filename(video.filename)
+       video.save(os.path.join(VIDEO_UPLOAD_FOLDER, video_filename))
 
     # ---------------- SAVE ----------------
     slum = Slum(
@@ -109,8 +117,8 @@ def add_slum():
         latitude=latitude,
         longitude=longitude,
         boundary=buffer_geom,
-        photo=photo.filename,
-        video=video.filename,
+        photo=photo_filename,
+        video=video_filename,
 
         total_households=total_households,
         total_population=total_population,
@@ -347,7 +355,6 @@ def update_gis_status():
     db.session.commit()
     return jsonify({"success": True})
 
-
 @slum_routes.route("/photos/<path:filename>")
 def serve_photo(filename):
     return send_from_directory(PHOTO_UPLOAD_FOLDER, filename)
@@ -361,5 +368,4 @@ def serve_video(filename):
     response.headers["Content-Type"] = "video/mp4"
     response.headers["Content-Disposition"] = "inline"
     return response
-
 
