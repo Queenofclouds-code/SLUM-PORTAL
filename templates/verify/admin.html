@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slum Identification & Administration</title>
+
+    <!-- Use your existing verification / landing styles -->
+    <link rel="stylesheet" href="/slum-portal/static/css/verify.css">
+    
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Page Header -->
+    <h2>Slum Identification & Administration</h2>
+    <p class="subtitle">
+        Slum-wise identification and location details
+    </p>
+
+    <!-- Administration Table -->
+    <table class="dept-table">
+        <thead>
+            <tr>
+                <th>Slum Name</th>
+                <th>Ward No</th>
+                <th>Zone</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in slums %}
+            <tr>
+    <td>{{ s.name }}</td>
+    <td>{{ s.ward_no }}</td>
+    <td>{{ s.zone }}</td>
+    <td>{{ "%.6f"|format(s.latitude) if s.latitude else "—" }}</td>
+    <td>{{ "%.6f"|format(s.longitude) if s.longitude else "—" }}</td>
+
+    <!-- STATUS COLUMN -->
+    <td class="status-cell">
+    <span class="status pending">{{ s.admin_status }}</span>
+
+    {% if s.admin_status == "Pending" %}
+        <button class="approve"
+                onclick="updateStatus('admin','{{ s.id }}','Verified')">
+            Approve
+        </button>
+        <button class="reject"
+                onclick="updateStatus('admin','{{ s.id }}','Rejected')">
+            Reject
+        </button>
+    {% endif %}
+</td>
+
+</tr>
+
+            {% else %}
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    No slum records found
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+<script src="/slum-portal/static/js/status.js"></script>
+
+</body>
+</html>
