@@ -3,22 +3,22 @@ function updateStatus(department, slumId, newStatus) {
 
     switch (department) {
         case "admin":
-            url = "/update/admin-status";
+            url = "/slum-portal/api/update/admin-status";
             break;
         case "demography":
-            url = "/update/demography-status";
+            url = "/slum-portal/api/update/demography-status";
             break;
         case "legal":
-            url = "/update/legal-status";
+            url = "/slum-portal/api/update/legal-status";
             break;
         case "infrastructure":
-            url = "/update/infrastructure-status";
+            url = "/slum-portal/api/update/infrastructure-status";
             break;
         case "housing":
-            url = "/update/housing-status";
+            url = "/slum-portal/api/update/housing-status";
             break;
         case "gis":
-            url = "/update/gis-status";
+            url = "/slum-portal/api/update/gis-status";
             break;
         default:
             alert("Invalid department");
